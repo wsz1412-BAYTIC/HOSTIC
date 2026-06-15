@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostic - مساعدك الذكي في Airbnb</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Almarai', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 50px 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1e40af;
+            margin-bottom: 10px;
+            font-size: 2.8em;
+            font-weight: bold;
+        }
+
+        .tagline {
+            color: #7c3aed;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .status {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-weight: bold;
+            border-left: 4px solid #1e40af;
+            display: none;
+        }
+
+        .info {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            line-height: 2;
+            border: 2px solid #e2e8f0;
+        }
+
+        .info h3 {
+            color: #1e40af;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            background: linear-gradient(135deg, #dbeafe 0%, #ede9fe 100%);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9em;
+        }
+
+        .feature-item strong {
+            color: #1e40af;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.05em;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4);
+        }
+
+        #error {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+            border-left: 4px solid #dc2626;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #1e40af;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.85em;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🏢</div>
+        <h1>Hostic</h1>
+        <p class="tagline">مساعدك الذكي لزيادة أرباحك من Airbnb</p>
+
+        <div id="status" class="status">
+            ✅ الخادم يعمل بنجاح! جاهز للبدء
+        </div>
+
+        <div id="error"></div>
+
+        <div class="info">
+            <h3>🚀 ميزات Hostic</h3>
+            <div class="features">
+                <div class="feature-item">
+                    <strong>💰 تسعير ذكي</strong>
+                    <span>أسعار ديناميكية حسب الطلب</span>
+                </div>
+                <div class="feature-item">
+                    <strong>📊 تحليلات</strong>
+                    <span>فهم عميق لسوقك</span>
+                </div>
+                <div class="feature-item">
+                    <strong>💬 تقييمات</strong>
+                    <span>تحسين تقييماتك تلقائياً</span>
+                </div>
+                <div class="feature-item">
+                    <strong>🔔 تنبيهات</strong>
+                    <span>إشعارات ذكية عبر WhatsApp</span>
+                </div>
+                <div class="feature-item">
+                    <strong>🎯 منافسين</strong>
+                    <span>مراقبة تحركات السوق</span>
+                </div>
+                <div class="feature-item">
+                    <strong>🤖 AI</strong>
+                    <span>توصيات محسوبة بدقة</span>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="checkServer()">✅ اختبر الاتصال بالخادم</button>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 15px; color: #1e40af;">جاري الاتصال...</p>
+        </div>
+
+        <footer>
+            <p>Hostic v1.0.0 | جميع الحقوق محفوظة © 2024</p>
+        </footer>
+    </div>
+
+    <script>
+        async function checkServer() {
+            const button = document.querySelector('button');
+            const loading = document.getElementById('loading');
+            const status = document.getElementById('status');
+            const error = document.getElementById('error');
+
+            button.disabled = true;
+            loading.style.display = 'block';
+            error.style.display = 'none';
+            status.style.display = 'none';
+
+            try {
+                const response = await fetch('http://localhost:5000/health', {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+
+                if (response.ok) {
+                    status.style.display = 'block';
+                } else {
+                    throw new Error('خطأ');
+                }
+            } catch (err) {
+                error.style.display = 'block';
+                error.textContent = '⚠️ تأكد من تشغيل الخادم: npm start';
+            } finally {
+                button.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(checkServer, 1000);
+        });
+    </script>
+</body>
+</html>
