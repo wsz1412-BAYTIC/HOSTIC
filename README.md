@@ -35,3 +35,15 @@ cp .env.example .env
 
 # شغل الخادم
 npm start
+hostic/
+├── backend/          # الخادم الرئيسي
+│   ├── server.js
+│   ├── package.json
+│   └── routes/
+├── frontend/         # الواجهة الأمامية
+│   ├── index.html
+│   ├── styles.css
+│   └── script.js
+└── database/         # قاعدة البيانات
+    └── schema.sql
+    
